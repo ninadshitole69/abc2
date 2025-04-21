@@ -1,0 +1,32 @@
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+
+# Define simple responses
+responses = {
+    "ai": "AI stands for Artificial Intelligence. It's about making machines think and act like humans.",
+    "machine learning": "Machine Learning is a subset of AI that helps machines learn from data.",
+    "deep learning": "Deep Learning is a type of Machine Learning using multi-layered neural networks.",
+    "types of ai": "There are 3 types: Narrow AI, General AI, and Superintelligent AI.",
+    "natural language processing": "NLP helps machines understand and respond in human language."
+}
+
+def get_response(user_input):
+    user_input = user_input.lower()
+    for keyword in responses:
+        if keyword in user_input:
+            return responses[keyword]
+    return "I'm not sure about that. Ask me something else about AI."
+
+def ai_chatbot():
+    print("Hi! I'm your AI chatbot. Ask me something about AI. (type 'quit' to stop)")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ["quit", "exit"]:
+            print("Chatbot: Bye!")
+            break
+        response = get_response(user_input)
+        print(f"Chatbot: {response}")
+
+# Run it
+ai_chatbot()

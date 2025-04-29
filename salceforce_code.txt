@@ -1,0 +1,23 @@
+public class Jay {
+    public static String sendmail(String to, String subject, String body){
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage(); 
+        List<String> toList = new List<String>{to};
+        mail.setToAddresses(toList);
+        mail.setSubject(subject);
+        mail.setPlainTextBody(body);
+		Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
+        System.debug('Mail sent Successfully');
+		return 'Mail Sent Successfully';
+    }
+}
+
+
+List<String> to = new List<String>{'manaspatil8056@gmail.com'};
+to.add('jaypareek1634@gmail.com');
+
+String subject = 'Hello, How are you?';
+String body = 'This is a test mail';
+
+for(String email : to){
+    Jay.sendmail(email, subject, body);
+}
